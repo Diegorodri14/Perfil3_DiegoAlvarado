@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { View, FlatList, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import Navbar from '../components/SharedComp/Navbar';
-import InfoProducts from '../components/FakeStore/InfoProducts';
+import ShowsInfo from '../components/InfoShows/ShowsInfo';
 
-export default function FakeStoreScreen() {
-  const [products, setProducts] = useState([]);
+export default function ApiScreen() {
+  const [shows, setShows] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchProducts();
+    fetchShows();
   }, []);
 
-  const fetchProducts = async () => {
+  const fetchShows = async () => {
     try {
-      const response = await fetch('https://fakestoreapi.com/products');
+      const response = await fetch('https://api.tvmaze.com/shows');
       const data = await response.json();
-      setProducts(data);
+      setShows(data.slice(0, 20)); // Limitar a 20 shows
     } catch (error) {
-      console.error('Error fetching products:', error);
+      console.error('Error fetching shows:', error);
     } finally {
       setLoading(false);
     }
@@ -25,7 +25,7 @@ export default function FakeStoreScreen() {
 
   return (
     <View style={styles.container}>
-      <Navbar title="Fake Store - Productos" />
+      <Navbar title="TV Shows" />
       
       {loading ? (
         <View style={styles.centered}>
@@ -33,8 +33,8 @@ export default function FakeStoreScreen() {
         </View>
       ) : (
         <FlatList
-          data={products}
-          renderItem={({ item }) => <InfoProducts product={item} />}
+          data={shows}
+          renderItem={({ item }) => <ShowsInfo show={item} />}
           keyExtractor={(item) => item.id.toString()}
           contentContainerStyle={styles.list}
         />

@@ -25,23 +25,8 @@ const styles = StyleSheet.create({
     elevation: 3,
     overflow: 'hidden',
   },
-  image: {
-    width: '100%',
-    height: 200,
-    backgroundColor: '#E5E7EB',
-  },
-  content: {
-    padding: 15,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#1F2937',
-    marginBottom: 8,
-  },
-  description: {
-    fontSize: 14,
-    color: '#6B7280',
-    lineHeight: 20,
-  }
+  image: { width: '100%', height: 200, backgroundColor: '#E5E7EB' },
+  content: { padding: 15 },
+  title: { fontSize: 18, fontWeight: 'bold', color: '#1F2937', marginBottom: 8 },
+  description: { fontSize: 14, color: '#6B7280', lineHeight: 20 }
 });

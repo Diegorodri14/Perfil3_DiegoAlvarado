@@ -1,64 +1,63 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
-export default function InfoEstudiante({ data }) {
+export default function InfoEstudiante({ estudiante }) {
+  if (!estudiante) return null;
+
   return (
     <View style={styles.container}>
-      <View style={styles.iconBox}>
-        <Ionicons name="school" size={40} color="#1E3A8A" />
+      <Image
+        source={{ uri: estudiante.avatar || 'https://via.placeholder.com/100' }}
+        style={styles.avatar}
+      />
+      <View style={styles.info}>
+        <Text style={styles.name}>{estudiante.nombre}</Text>
+        <Text style={styles.carnet}>{estudiante.carnet}</Text>
+        <Text style={styles.grado}>{estudiante.grado}</Text>
+
       </View>
-      <Text style={styles.label}>Nombre Completo</Text>
-      <Text style={styles.value}>{data.nombre}</Text>
-      
-      <View style={styles.divider} />
-      
-      <Text style={styles.label}>Número de Carnet</Text>
-      <Text style={styles.value}>{data.carnet}</Text>
-      
-      <View style={styles.divider} />
-      
-      <Text style={styles.label}>Sección y Grupo</Text>
-      <Text style={styles.value}>{data.seccion}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFFFFF',
-    padding: 20,
-    borderRadius: 15,
-    marginTop: -30,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 5,
+    flexDirection: 'row',
+    padding: 16,
+    backgroundColor: '#fff',
+    margin: 8,
+    borderRadius: 8,
+    elevation: 2,
   },
-  iconBox: {
-    alignSelf: 'center',
-    backgroundColor: '#DBEAFE',
-    padding: 15,
-    borderRadius: 50,
-    marginBottom: 15,
+  avatar: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    marginRight: 16,
   },
-  label: {
-    fontSize: 12,
-    color: '#6B7280',
-    fontWeight: '600',
-    textTransform: 'uppercase',
-    marginBottom: 4,
+  info: {
+    flex: 1,
+    justifyContent: 'center',
   },
-  value: {
+  name: {
     fontSize: 18,
-    color: '#111827',
     fontWeight: 'bold',
-    marginBottom: 10,
+    color: '#333',
   },
-  divider: {
-    height: 1,
-    backgroundColor: '#E5E7EB',
-    marginVertical: 10,
-  }
+  email: {
+    fontSize: 14,
+    color: '#666',
+    marginTop: 4,
+  },
+  career: {
+    fontSize: 14,
+    color: '#6200ee',
+    marginTop: 4,
+  },
+  grade: {
+    fontSize: 14,
+    color: '#333',
+    marginTop: 4,
+    fontWeight: '600',
+  },
 });

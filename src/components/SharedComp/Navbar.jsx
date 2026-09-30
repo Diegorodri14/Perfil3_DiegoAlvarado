@@ -3,18 +3,30 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-export default function Navbar({ title, showBack = false }) {
+export default function Navbar({ title, showBack = false, onHomePress }) {
   const navigation = useNavigation();
+
+  const handleBack = () => {
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    }
+  };
+
+  const handleHome = () => {
+    if (onHomePress) {
+      onHomePress();
+    } else if (navigation.canGoBack()) {
+      navigation.navigate('Inicio');
+    }
+  };
 
   return (
     <View style={styles.container}>
-      {showBack && (
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-          <Ionicons name="arrow-back" size={24} color="#FFFFFF" />
-        </TouchableOpacity>
-      )}
-      <Text style={styles.title}>{title}</Text>
-      {!showBack && <View style={styles.placeholder} />}
+      {/* Botón izquierdo: flecha de regreso o icono de inicio */}
+
+      {/* Título centrado */}
+      <Text style={styles.title} numberOfLines={1}>{title}</Text>
+
     </View>
   );
 }
@@ -25,11 +37,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: '#1E3A8A',
-    paddingTop: 50,
-    paddingBottom: 20,
-    paddingHorizontal: 20,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
+    paddingTop: 55,
+    paddingBottom: 22,
+    paddingHorizontal: 18,
+    borderBottomLeftRadius: 22,
+    borderBottomRightRadius: 22,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.15,
+    shadowRadius: 5,
+    elevation: 6,
   },
   title: {
     fontSize: 20,
@@ -37,11 +54,12 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     flex: 1,
     textAlign: 'center',
+    letterSpacing: 0.5,
   },
-  backBtn: {
-    padding: 5,
+  iconBtn: {
+    padding: 6,
+    alignItems: 'center',
+    justifyContent: 'center',
+    minWidth: 40,
   },
-  placeholder: {
-    width: 34,
-  }
 });
