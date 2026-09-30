@@ -5,7 +5,7 @@
 - **Carnet:** 20210032 
 
 ## Enlaces de Entrega
-- **Enlace de vídeo demostrativo:** 
+- **Enlace de vídeo demostrativo:** https://drive.google.com/file/d/1S3INFfMbOwLTMIceLEGEU9aPj9sYQXuL/view?usp=drivesdk
 - **Enlace para descargar el APK:** https://expo.dev/accounts/diegorod_14/projects/Perfil3_DiegoAlvarado/builds/6331cbea-d96b-4f8d-8bbd-df9d15edff8e
 
 ## Descripción del Proyecto
