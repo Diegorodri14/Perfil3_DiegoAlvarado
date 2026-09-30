@@ -1,18 +1,28 @@
 {
-  "name": "perfil3_diegoalvarado",
-  "version": "1.0.0",
-  "main": "index.js",
-  "dependencies": {
-    "expo": "~57.0.26",
-    "expo-status-bar": "~57.0.1",
-    "react": "19.2.3",
-    "react-native": "0.86.3"
-  },
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
-  },
-  "private": true
+  "expo": {
+    "name": "Perfil3_DiegoAlvarado",
+    "slug": "Perfil3_DiegoAlvarado",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1E3A8A"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1E3A8A"
+      },
+      "package": "com.diegoalvarado.perfil3"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
 }
